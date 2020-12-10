@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="cn">
+ <head> 
+  <meta charset="utf-8" /> 
+  <title>聊一聊前端性能优化</title> 
+  <link rel="icon" type="image/x-icon" href="img/favo.ico" /> 
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML" /> 
+  <meta name="author" content="Hakim El Hattab" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> 
+  <link rel="stylesheet" href="css/reveal.css" /> 
+  <link rel="stylesheet" href="css/theme/black.css" id="theme" /> 
+  <!-- Theme used for syntax highlighting of code --> 
+  <link rel="stylesheet" href="lib/css/zenburn.css" /> 
+  <!-- Printing and PDF exports --> 
+  <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script> 
+  <!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]--> 
+ </head> 
+ <body> 
+  <div class="reveal"> 
+   <!-- Any section element inside of this container is displayed as a slide --> 
+   <div class="slides"> 
+    <!-- <section data-background-video="img/video.mp4" data-background-color="#000000" > --> 
+    <section> 
+     <h3 style="font-family:'STLiti',华文隶书"><font color="#0000FF">聊一聊</font></h3> 
+     <h6 style="text-transform:none">前端性能优化</h6> 
+     <br /> 
+     <br /> 
+     <p> <small>分享By <a href="" target="_blank">吴俊杰</a> </small> </p> 
+     <p> <small>时间 2020-12-25</small> </p> 
+    </section> 
+    <section style="text-align: left;"> 
+     <h5>目录</h5> 
+     <hr style="transition:width 0.5s linear" /> 
+     <p>1、代码优化</p> 
+     <p>2、资源优化</p> 
+     <p>3、其他优化</p> 
+     <p></p> 
+     <hr /> 
+    </section> 
+    <!-- Section 1: 如何部署tf model --> 
+    <section> 
+     <!-- 下箭头翻页 1--> 
+     <section> 
+      <h5 style="font-family:'STLiti',华文隶书">1.代码优化?</h5> 
+     </section> 
+     <section> 
+      <br /> 
+      <ul style="font-size:30px"> 
+       <li style="list-style-type:none;">✍ 传统的机器学习模型我们已经有很多方法： 
+        <ul> 
+         <li>嵌入式✘</li> 
+        </ul> </li> 
+       <li style="list-style-type:none;">✍ 一般的思路： 
+        <ul> 
+         <li>模型训练和预测均在线上</li> 
+         <li>模型训练在线下(模型文件，pickle文件，二进制文件等保存模型必要的参数，超参数和模型结构)然后线上做预测</li> 
+        </ul> </li> 
+      </ul> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p>对于TensorFlow训练的Model呢？</p> 
+      <br /> 
+      <ul style="font-size:30px"> 
+       <li style="list-style-type:none;">☠ 无意间发现了一个更简单的办法: <a href="https://stfs.readthedocs.io/en/latest/" target="_blank">Simple TensorFlow Serving</a></li> 
+       <li style="list-style-type:none;">☠ test</li> 
+      </ul> 
+     </section> 
+     <section data-background="img/sfts1.jpeg"> 
+     </section> 
+     <section data-background="img/sfts2.jpeg"> 
+     </section> 
+     <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom"> 
+      <p>面对疾风吧 &#55358;&#56688; </p> 
+     </section> 
+    </section> 
+    <section> 
+     <section> 
+      <h3 style="font-family:'STLiti',华文隶书;text-transform:none">2.Simple TensorFlow Serving</h3> 
+      <br /> 
+      <br /> 
+      <br /> 
+      <ul style="font-size:25px;list-style-type:none;"> 
+       <li>☠ 教程: 
+        <ul style="font-size:20px"> 
+         <li> <a href="https://stfs.readthedocs.io/en/latest/" target="_blank">https://stfs.readthedocs.io/en/latest/</a></li> 
+        </ul> </li> 
+       <li>☠ 项目地址: 
+        <ul style="font-size:20px"> 
+         <li> <a href="https://github.com/tobegit3hub/simple_tensorflow_serving" target="_blank">https://github.com/tobegit3hub/simple_tensorflow_serving</a></li> 
+        </ul> </li> 
+      </ul> 
+     </section> 
+     <section style="text-align: left; "> 
+      <p>qqqqqq</p> 
+     </section> 
+     <section> 
+      <pre>
+						<code class="hljs" data-trim="" contenteditable="">
+							# 常用命令
+							code
+						</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <h5 style="text-transform:none;"> TensorFlow SavedModel保存和加载模型</h5> 
+      <p style="font-size:30px"> ☠经常看到的 tf.train.Saver对应的东西。使用这种方法保存模型会产生两种文件:</p> 
+      <p class="fragment">点击出现</p> 
+      <p class="fragment">点击出现</p> 
+      <pre>
+						<code class="hljs" data-trim="" contenteditable="">
+							# 模型保存的过程
+							code
+						</code>
+						</pre> 
+      <p></p> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ tf.saved_model.builder.SavedModelBuilder</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+						contrib_ode
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 模型保存后的结构</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+
+					code
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ Example</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					code
+
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 参数列表</p> 
+      <img src="img/sig_para.png" /> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 参数tags</p> 
+      <img src="img/tag.png" /> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ <a href="https://github.com/tensorflow/serving/blob/master/tensorflow_serving/g3doc/signature_defs.md" target="_blank">使用SignatureDef</a></p> 
+      <p style="font-size:20px">1.SignatureDef，将输入输出tensor的信息都进行了封装，并且给他们一个自定义的别名，所以在构建模型的阶段，可以随便给tensor命名，只要在保存训练好的模型的时候，在SignatureDef中给出统一的别名即可。</p> 
+      <p style="font-size:20px">2.TensorFlow的关于这部分的例子中用到了不少<a href="https://tensorflow.google.cn/api_docs/python/tf/saved_model/signature_constants" target="_blank">signature_constants</a>，这些constants的用处主要是提供了一个方便统一的命名。</p> 
+      <pre>
+							<code class="hljs" data-trim="" contenteditable="">
+							# 构建signature
+							</code>
+						</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p class="fragment grow" style="font-size:30px"><a href="coede_static/code_stfs1.html" target="_blank">一个小栗子</a></p> 
+      <p class="fragment grow" style="font-size:30px">训练好的saveModel要保存</p> 
+      <p class="fragment grow" style="font-size:30px"><a href="http://172.16.100.147:8500/" target="_blank">看一下我们部署的深度学习Model</a></p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					simple_tensorflow_serving -h
+					simple_tensorflow_serving --model_base_path=&quot;/home/soft/model&quot;
+
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:25px">☠ saveModel导入</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					export_dir = ...
+					...
+					with tf.Session(graph=tf.Graph()) as sess:
+					  tf.saved_model.loader.load(sess, [tag_constants.TRAINING], export_dir)
+					  ...
+					</code>
+					</pre> 
+      <p style="font-size:25px" class="fragment grow">简单保存：tf.saved_model.simple_save </p> 
+      <p style="font-size:25px" class="fragment grow">搭配 Estimator 使用 SavedModel </p> 
+      <p style="font-size:25px" class="fragment grow">使用 CLI 检查并执行 SavedModel </p> 
+     </section> 
+     <section data-background="img/score.jpeg"> 
+     </section> 
+    </section> 
+    <!-- section3 tfs+docker --> 
+    <section> 
+     <section> 
+      <h3 style="font-family:'STLiti',华文隶书;text-transform:none">3.TensorFlow Serving + Docker</h3> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ Docker-快到碗里来！</p> 
+      <br /> 
+      <blockquote cite="http://www.runoob.com/docker/docker-tutorial.html" style="font-size:25px">
+        &nbsp; &nbsp; &nbsp; &nbsp; Docker 是一个开源的应用容器引擎，基于 Go 语言 并遵从Apache2.0协议开源。
+       <br /> &nbsp; &nbsp; &nbsp; &nbsp;Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。
+       <br /> &nbsp; &nbsp; &nbsp; &nbsp;容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）,更重要的是容器性能开销极低。 
+      </blockquote> 
+     </section> 
+     <section style="text-align: left;"> 
+      <a href="http://www.docker.org.cn/" target="_blank"><img src="img/docker_CN.png" style="border:0;" /></a>
+      <br /> 
+      <!-- 	<a href="http://www.runoob.com/docker/docker-tutorial.html" target="_blank"><img src="img/cainiao.png" style="border:0;"></a> --> 
+      <ul style="font-size:30px;list-style-type:none;"> 
+       <li>☠ Docker通常用于如下场景： 
+        <ul style="font-size:25px"> 
+         <li>web应用的自动化打包和发布</li> 
+         <li>自动化测试和持续集成、发布</li> 
+         <li>在服务型环境中部署和调整数据库或其他的后台应用</li> 
+         <li>从头编译或者扩展现有的OpenShift或Cloud Foundry平台来搭建自己的PaaS环境</li> 
+        </ul> </li> 
+       <li>☠ 不是本节课重点,可以自行学习</li> 
+      </ul> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 1.模型保存：savedModel</p> 
+      <br /> 
+      <a href="coede_static/code_avemodel.html" target="_blank"><p>【点我查看官方提供的样例】</p></a> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 2.Docker安装tensorflow serving</p> 
+      <br /> 
+      <p class="fragment highlight-red" style="font-size:30px">安装方式有很多种，官方推荐通过Docker</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					# docker镜像中运行资源(会在dockerHub中安装该镜像)
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 3.Docker部署tensorflow serving</p> 
+      <br /> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					# 在我们的GPU服务器上
+					</code>
+					</pre> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+					
+					# 在我们GPU服务器上
+					docker run -p 8501:8501 \
+					  --mount type=bind,source=/home/xujing/lx_soft/resnet,target=/models/resnet \
+					  -e MODEL_NAME=resnet -t tensorflow/serving &amp;
+					</code>
+					</pre> 
+      <p style="font-size:25px" class="fragment grow">开启我们的TensorFlow Serving 部署ResNet 50</p> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:30px">☠ 4.测试部署的TensorFlow部署的Model</p> 
+      <br /> 
+      <p style="font-size:25px" class="fragment grow">很大的坑调了我2天！</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+						code
+					</code>
+					</pre> 
+      <p style="font-size:25px" class="fragment grow">开启我们的TensorFlow Serving 部署ResNet 50</p> 
+     </section> 
+     <section data-transition="slide" data-background="#b5533c" data-background-transition="zoom"> 
+      <p>最后一步要做的是微信端的开发！</p> 
+     </section> 
+    </section> 
+    <!-- section4 基于微信的图像识别应用  --> 
+    <section> 
+     <section> 
+      <h3 style="font-family:'STLiti',华文隶书;text-transform:none">4.基于微信的图像识别应用</h3> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:25px">☠ 基于微信构建最终的VQA系统</p>
+      <br /> 
+      <ul style="font-size:25px;list-style-type:none;"> 
+       <li>☠ 方案有3种： 
+        <ul style="font-size:25px"> 
+         <li>基于微信聊天接口(Python: itchat,wxpy)</li> 
+         <li>基于公众号 (RWeixin)</li> 
+         <li>基于微信小程序</li> 
+        </ul> </li> 
+      </ul> 
+      <br /> 
+      <p style="font-size:25px">⚡ 我们采取基于微信聊天的接口</p> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:25px">☠ 核心代码如下:</p> 
+      <pre>
+					<code class="hljs" data-trim="" contenteditable="">
+						code
+					</code>
+					</pre> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:25px">☠ 基于WeChat的VQA效果:</p> 
+      <style>
+					#my_div{
+					  display:table-cell;
+					  height:600px;
+					}
+					</style> 
+      <div id="my_div">
+       <img src="img/wechat1.jpg" align="middle" />
+      </div> 
+      <div id="my_div">
+       <img src="img/wechat2.jpg" align="middle" />
+      </div> 
+      <div id="my_div">
+       <img src="img/wechat3.jpg" align="middle" />
+      </div> 
+     </section> 
+     <section style="text-align: left;"> 
+      <p style="font-size:25px">☠ 基于WeChat的VQA效果:</p> 
+      <div id="my_div">
+       <img src="img/wechat4.jpg" align="middle" />
+      </div> 
+      <div id="my_div">
+       <img src="img/wechat5.jpg" align="middle" />
+      </div> 
+      <div id="my_div">
+       <img src="img/wechat6.jpg" align="middle" />
+      </div> 
+     </section> 
+     <section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom"> 
+      <p>最后开启服务让我们体验基于微信的VQA系统！ ☕ </p> 
+     </section> 
+    </section> 
+    <section> 
+     <section> 
+      <h3 style="font-family:'STLiti',华文隶书;text-transform:none">5.总结</h3> 
+     </section> 
+     <section> 
+      <ul style="font-size:35px;list-style-type:none;"> 
+       <li>☠ 传统机器学习模型部署的方法</li>
+       <br /> 
+       <li>☠ 深度学习模型的部署之道--在硬件资源限制下如何提高模型调用速度:</li> 
+       <ul style="font-size:30px"> 
+        <li>传统的部署方法</li> 
+        <li>simple TensorFlow Serving</li> 
+        <li>TensorFlow Serving+Docker</li> 
+        <li>基于WeChat的VQA系统构建</li> 
+       </ul> 
+       <br /> 
+       <li>☠ 与传统方式相比，大大提高了深度学习模型的调用速度(毫秒级)，并且支持GPU,分布式和多框架</li> 
+      </ul> 
+     </section> 
+    </section> 
+    <!-- section6 the end --> 
+    <section style="text-align: left;"> 
+     <h1>THE END</h1> 
+     <p> - <a href="https://slides.com" target="_blank">Thanks Reveal.js</a> <br /> - <a href="https://github.com/hakimel/reveal.js" target="_blank"> Reveal.js</a> <br /> - <a href="https://github.com/DataXujing/tensorflow-serving-Wechat" target="_blank">Source code &amp; documentation</a><br /> - <a href="https://dataxujing.github.io/tensorflow-serving-Wechat/#/" target="_blank"> Online Slides</a><br /> - <a href="https://dataxujing.github.io" target="_blank">About Xu Jing</a> </p> 
+    </section> 
+    <section> 
+     <section> 
+      <h3 style="font-family:'STLiti',华文隶书;text-transform:none">还没完！Keras呢？</h3> 
+      <p>除了STFS和TFS部署，对于Keras模型有没有更好的办法？</p> 
+     </section> 
+     <section> 
+      <ul style="font-size:35px;list-style-type:none;"> 
+       <li>☠ Train our model with Keras</li> 
+       <li>☠ Save our model </li> 
+       <li>☠ Write our Flask backend to serve our saved model (then look at dep classes (load.py, index.js, index.html)</li> 
+       <li>☠ Deploy our code to ** Cloud</li> 
+      </ul> 
+     </section> 
+     <section data-background="img/keras0.png"> 
+     </section> 
+     <section style="text-align: left;"> 
+      <div id="my_div"> 
+       <a href="https://github.com/transcranial/keras-js" target="_blank"><img src="img/keras1.png" align="middle" /></a>
+      </div> 
+      <div id="my_div">
+       <a href="https://github.com/mil-tokyo/webdnn" target="_blank"><img src="img/keras2.png" align="middle" /></a>
+      </div> 
+      <div id="my_div">
+       <a href="https://github.com/scienceai/neocortex" target="_blank"><img src="img/keras3.png" align="middle" /></a>
+      </div> 
+     </section> 
+    </section> 
+   </div> 
+  </div> 
+  <!-- Other Code --> 
+  <script src="lib/js/head.min.js"></script> 
+  <script src="js/reveal.js"></script> 
+  <script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>   
+ </body>
+</html>
