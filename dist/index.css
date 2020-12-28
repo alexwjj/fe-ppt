@@ -2,3 +2,9 @@
   display: inline-block;
   width: 45%;
 }
+.font-red{
+  color: #ff502c
+}
+.font-mini{
+  font-size: 12px
+}
