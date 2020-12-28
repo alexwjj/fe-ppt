@@ -31,8 +31,46 @@
       id="highlight-theme"
     />
   </head>
+  <style>
+    #loadding {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+      }
+      #loadding > span {
+        display: inline-block;
+        width: 8px;
+        height: 100%;
+        margin-right: 5px;
+        border-radius: 4px;
+        -webkit-animation: load 1.04s ease infinite;
+        animation: load 1.04s ease infinite;
+      }
+      @keyframes load {
+        0%,100%{
+          height: 40px;
+          background: #98BEFF;
+        }
+        50%{
+          height: 60px;
+          margin-top: -20px;
+          background: #3E7FEE;
+        }
+      }
+  </style>
 
   <body>
+    <!-- <div id="loadding">
+      <span></span>
+      <span style="animation-delay:0.13s;"></span>
+      <span style="animation-delay:0.26s;"></span>
+      <span style="animation-delay:0.39s;"></span>
+      <span style="animation-delay:0.52s;"></span>
+    </div> -->
     <div class="reveal">
       <!-- Any section element inside of this container is displayed as a slide -->
       <div class="slides">
@@ -782,7 +820,7 @@
               data-id="code-animation"
               style="font-size: 18px"
             ><code class="hljs" data-trim data-line-numbers>
-                <link rel="preload" href="xxxx.woff2" as="font" crossorigin="anonymous"/>
+                <`link rel="preload" href="xxx" as="font" crossorigin="anonymous"/>
               </code></pre>
             <img
               src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9790c73b17ef43a9acb1701215aca9d4~tplv-k3u1fbpfcp-watermark.image"
@@ -795,7 +833,7 @@
               data-id="code-animation"
               style="font-size: 18px"
             ><code class="hljs" data-trim data-line-numbers>
-                <link rel="prefetch" href="xxxx.woff2" as="font" crossorigin="anonymous"/>
+                <`link rel="prefetch" href="xxx" as="font" crossorigin="anonymous"/>
               </code></pre>
             <img
               src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/04a0fe68e9634c20b963d1d2817126ad~tplv-k3u1fbpfcp-watermark.image"
@@ -821,7 +859,7 @@
               data-id="code-animation"
               style="font-size: 16px"
             ><code class="hljs" data-trim data-line-numbers>
-              <img src="index.jpg" sizes="100vw" srcset="./img/dog.jpg 800w, ./img/index.jpg 1200w"/>
+              <`img src="index.jpg" sizes="100vw" srcset="./img/dog.jpg 800w, ./img/index.jpg 1200w"/>
             </code></pre>
             <img
               src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7427e9243791461b8ffa49f47981cfba~tplv-k3u1fbpfcp-watermark.image"
@@ -969,6 +1007,16 @@
           RevealHighlight,
         ],
       });
+      function removeLoading () {
+        const $loadding = document.getElementById('loadding');
+        if (!$loadding) {
+          return;
+        }
+        $loadding.style.display = 'none';
+        $loadding.parentNode.removeChild($loadding);
+      }
+      
+      window.addEventListener('load', removeLoading);
     </script>
   </body>
 </html>

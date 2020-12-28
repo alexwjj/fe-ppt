@@ -22,7 +22,6 @@
     font-family: 'Source Sans Pro';
     src: url('./source-sans-pro-semibold.eot');
     src: url('./source-sans-pro-semibold.eot?#iefix') format('embedded-opentype'),
-         url('./source-sans-pro-semibold.woff') format('woff'),
          url('./source-sans-pro-semibold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
