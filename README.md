@@ -1,1 +1,5 @@
-## 基于[Reveal.js](https://github.com/hakimel/reveal.js)制作
+## 前端性能优化
+
+### 掘金个人主页：https://juejin.cn/user/3386151545609837
+
+### 个人博客：https://alexwjj.github.io/
